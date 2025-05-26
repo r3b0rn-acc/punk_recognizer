@@ -1,1 +1,2 @@
-from .recognize import Recognize
+from .recognize_task import RecognizeTask
+from .prediction import Prediction
