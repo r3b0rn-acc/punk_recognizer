@@ -4,3 +4,4 @@
 local_settings.py
 .env
 docker-compose.override.yml
+dataset.csv
