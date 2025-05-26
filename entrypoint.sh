@@ -13,5 +13,4 @@ python manage.py migrate --noinput
 echo "Collecting static"
 python manage.py collectstatic --noinput
 
-echo "Gunicorn launching"
-exec gunicorn wsgi:application --bind 0.0.0.0:8000
+exec "$@"
