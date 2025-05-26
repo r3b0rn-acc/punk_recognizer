@@ -2,7 +2,7 @@ FROM python:3.11
 
 ENV PYTHONUNBUFFERED 1
 
-WORKDIR /
+WORKDIR /punk_recognizer
 
 RUN apt-get update && apt-get install -y \
     build-essential \
