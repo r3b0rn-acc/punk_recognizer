@@ -1,0 +1,6 @@
+/.venv/
+/docker/
+!/docker/scripts
+__pycache__/
+
+/classifier/dataset

@@ -1,6 +1,14 @@
 services:
+  _base:
+    image: punk_recognizer_base:latest
+    build:
+      context: .
+      dockerfile: docker/base.Dockerfile
+    profiles: ["build-only"]
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: docker/web.Dockerfile
     container_name: punk_recognizer_web
     ports:
       - "8000:8000"
@@ -28,9 +36,10 @@ services:
     restart: always
 
   celery_worker:
-    build: .
+    build:
+      context: .
+      dockerfile: docker/celery.Dockerfile
     container_name: celery_worker
-    command: celery -A celery_app:app worker --loglevel=info --concurrency=2 --prefetch-multiplier=1
     restart: always
     env_file:
       - .env
@@ -38,22 +47,21 @@ services:
       RUN_MIGRATIONS: "0"
     depends_on:
       - redis
-      - web
+      - db
 
   nginx:
     build:
       context: .
-      dockerfile: nginx.Dockerfile
+      dockerfile: docker/nginx.Dockerfile
     container_name: nginx
     restart: always
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - ./certs:/etc/nginx/ssl:ro
-      - ./mime.types:/etc/nginx/mime.types:ro
+      - ./nginx/certs:/etc/nginx/ssl:ro
+      - ./nginx/mime.types:/etc/nginx/mime.types:ro
       - static_volume:/punk_recognizer/staticfiles:ro
-    entrypoint: /nginx-entrypoint.sh
     env_file:
       - .env
     depends_on:
