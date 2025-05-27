@@ -41,16 +41,17 @@ services:
       - web
 
   nginx:
-    image: nginx:latest
+    build:
+      context: .
+      dockerfile: nginx.Dockerfile
     container_name: nginx
-    entrypoint: ./nginx-entrypoint.sh
     restart: always
     ports:
       - "80:80"
     volumes:
-      - ./nginx.conf.template:/etc/nginx/templates/nginx.conf.template:ro
       - ./mime.types:/etc/nginx/mime.types:ro
       - static_volume:/punk_recognizer/staticfiles:ro
+    entrypoint: /nginx-entrypoint.sh
     env_file:
       - .env
     depends_on:
