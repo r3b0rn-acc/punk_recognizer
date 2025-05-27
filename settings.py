@@ -13,6 +13,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_vite',
+
     'punk_recognizer',
 ]
 
@@ -69,14 +71,15 @@ USE_I18N = True
 USE_TZ = True
 
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+VITE_DEV_MODE = False
 
 
 try:
@@ -84,3 +87,11 @@ try:
 except ImportError:
     from warnings import warn
     warn('create local_settings.py')
+
+
+DJANGO_VITE = {
+    'default': {
+        'dev_mode': VITE_DEV_MODE,
+        'static_url_prefix': 'punk_recognizer',
+    }
+}
