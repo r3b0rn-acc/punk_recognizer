@@ -9,8 +9,7 @@ services:
     env_file:
       - .env
     environment:
-      SQL_HOST: ${SQL_HOST}
-      SQL_PORT: ${SQL_PORT}
+      RUN_MIGRATIONS: "1"
     depends_on:
       - db
 
@@ -20,10 +19,6 @@ services:
     restart: always
     env_file:
       - .env
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -39,6 +34,8 @@ services:
     restart: always
     env_file:
       - .env
+    environment:
+      RUN_MIGRATIONS: "0"
     depends_on:
       - redis
       - web

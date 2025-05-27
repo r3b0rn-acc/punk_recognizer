@@ -7,8 +7,10 @@ until pg_isready -h "$SQL_HOST" -p "$SQL_PORT" > /dev/null 2>&1; do
   sleep 0.5
 done
 
-echo "Applying migrations"
-python manage.py migrate --noinput
+if [ "$RUN_MIGRATIONS" = "1" ]; then
+  echo "Applying migrations"
+  python manage.py migrate --noinput
+fi
 
 echo "Collecting static"
 python manage.py collectstatic --noinput
