@@ -49,6 +49,7 @@ services:
     ports:
       - "80:80"
     volumes:
+      - ./certs:/etc/nginx/ssl:ro
       - ./mime.types:/etc/nginx/mime.types:ro
       - static_volume:/punk_recognizer/staticfiles:ro
     entrypoint: /nginx-entrypoint.sh
