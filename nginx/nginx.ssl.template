@@ -19,7 +19,7 @@ server {
     ssl_ciphers HIGH:!aNULL:!MD5;
 
     location /static/ {
-        alias /punk_recognizer/staticfiles/;
+        alias /punk_recognizer/static/;
     }
 
     location / {
