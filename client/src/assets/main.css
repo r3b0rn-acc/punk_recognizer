@@ -1,1 +1,44 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap');
+
+@theme {
+  --color-primary: #2c2c2c;
+  --color-app-bg: #161616;
+}
+
+
+@layer base {
+  body {
+    @apply text-white bg-app-bg font-sans antialiased;
+    font-family: 'Noto Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+
+  a {
+    @apply text-blue-400 hover:text-blue-300 transition-colors;
+  }
+
+  button {
+    @apply transition duration-200 ease-in-out;
+  }
+}
+
+
+@layer utilities {
+  .blur-bg {
+    backdrop-filter: blur(16px);
+    background-color: rgba(22, 22, 22, 0.7);
+  }
+
+  .glass-card {
+    @apply p-4 rounded-2xl shadow-lg backdrop-blur-md bg-white/5;
+  }
+}
+
+
+.app {
+  @apply min-h-screen flex flex-col bg-app-bg;
+}
