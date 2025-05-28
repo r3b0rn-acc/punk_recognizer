@@ -1,20 +1,30 @@
 {
   "src/main.js": {
-    "file": "assets/main-91J2YvKA.js",
+    "file": "assets/main-Dk9fpZTO.js",
     "name": "main",
     "src": "src/main.js",
     "isEntry": true,
     "dynamicImports": [
-      "src/views/Recognizer.vue"
+      "src/views/RecognizerView.vue",
+      "src/views/ProcessingView.vue"
     ],
     "css": [
-      "assets/main-C8sYO5er.css"
+      "assets/main-CvXfPYUU.css"
     ]
   },
-  "src/views/Recognizer.vue": {
-    "file": "assets/Recognizer-DHH7aK3A.js",
-    "name": "Recognizer",
-    "src": "src/views/Recognizer.vue",
+  "src/views/ProcessingView.vue": {
+    "file": "assets/ProcessingView-COYgGvJi.js",
+    "name": "ProcessingView",
+    "src": "src/views/ProcessingView.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.js"
+    ]
+  },
+  "src/views/RecognizerView.vue": {
+    "file": "assets/RecognizerView-Cnz8Ldkm.js",
+    "name": "RecognizerView",
+    "src": "src/views/RecognizerView.vue",
     "isDynamicEntry": true,
     "imports": [
       "src/main.js"
