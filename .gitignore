@@ -1,6 +1,8 @@
 /.venv
 /.idea
 /classifier/dataset/
+/classifier/weights/
+/classifier/indexes/
 local_settings.py
 .env
 docker-compose.override.yml
