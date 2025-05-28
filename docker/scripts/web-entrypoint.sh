@@ -12,7 +12,4 @@ if [ "$RUN_MIGRATIONS" = "1" ]; then
   python manage.py migrate --noinput
 fi
 
-echo "Collecting static"
-python manage.py collectstatic --noinput
-
 exec "$@"

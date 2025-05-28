@@ -18,7 +18,7 @@ export default defineConfig({
   build: {
     manifest: 'manifest.json',
     emptyOutDir: true,
-    outDir: '../punk_recognizer/static/punk_recognizer/',
+    outDir: '../static/punk_recognizer/',
     rollupOptions: {
       input: './src/main.js',
     }
