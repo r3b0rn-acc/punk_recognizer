@@ -23,20 +23,25 @@
       type="file"
       class="hidden"
       accept="image/*"
-      @change="onFileChange"
     />
   </div>
 </template>
 
 <script setup>
-import { ref, onUnmounted } from 'vue'
+import { ref } from 'vue'
 import { useDropZone } from '@vueuse/core'
+
+const props = defineProps({
+  modelValue: {
+    type: Object,
+    required: true,
+  }
+})
+
+const emit = defineEmits(['update:modelValue'])
 
 const dropZone = ref(null)
 const fileInput = ref(null)
-
-const file = ref(null)
-const previewUrl = ref('')
 
 const onDrop = (files) => {
   if (files && files.length === 1) {
@@ -46,17 +51,11 @@ const onDrop = (files) => {
       return
     }
 
-    if (previewUrl.value) {
-      URL.revokeObjectURL(previewUrl.value)
-      previewUrl.value = ''
-    }
-
-    file.value = {
+    emit('update:modelValue', {
       name: f.name,
       size: f.size,
       type: f.type,
-    }
-    previewUrl.value = URL.createObjectURL(f)
+    })
   }
 }
 
@@ -69,18 +68,4 @@ const { isOverDropZone } = useDropZone(dropZone, {
 const triggerInput = () => {
   fileInput.value?.click()
 }
-
-
-const onFileChange = (e) => {
-  const files = e.target.files
-  if (files && files.length === 1) {
-    onDrop(Array.from(files))
-  }
-}
-
-onUnmounted(() => {
-  if (previewUrl.value) {
-    URL.revokeObjectURL(previewUrl.value)
-  }
-})
 </script>
