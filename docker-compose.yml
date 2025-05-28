@@ -13,7 +13,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./punk_recognizer/static:/punk_recognizer/static
+      - ./static:/punk_recognizer/static:ro
     env_file:
       - .env
     environment:
@@ -61,7 +61,7 @@ services:
     volumes:
       - ./nginx/certs:/etc/nginx/ssl:ro
       - ./nginx/mime.types:/etc/nginx/mime.types:ro
-      - ./punk_recognizer/static:/punk_recognizer/static
+      - ./static:/punk_recognizer/static:ro
     env_file:
       - .env
     depends_on:
