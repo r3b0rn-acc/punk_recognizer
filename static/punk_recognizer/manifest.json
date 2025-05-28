@@ -1,0 +1,30 @@
+{
+  "src/assets/puck_background.jpg": {
+    "file": "assets/puck_background-Ba2KuO2i.jpg",
+    "src": "src/assets/puck_background.jpg"
+  },
+  "src/main.js": {
+    "file": "assets/main-BnZOfOc0.js",
+    "name": "main",
+    "src": "src/main.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "src/views/Recognizer.vue"
+    ],
+    "css": [
+      "assets/main-pBn3ww_z.css"
+    ],
+    "assets": [
+      "assets/puck_background-Ba2KuO2i.jpg"
+    ]
+  },
+  "src/views/Recognizer.vue": {
+    "file": "assets/Recognizer-BZo0FQQt.js",
+    "name": "Recognizer",
+    "src": "src/views/Recognizer.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.js"
+    ]
+  }
+}
