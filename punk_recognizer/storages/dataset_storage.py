@@ -4,7 +4,7 @@ from django.core.files.storage import FileSystemStorage
 
 
 class DatasetStorage(FileSystemStorage):
-    def __init__(self, location=settings.BASE_DIR / 'dataset'):
+    def __init__(self, location=settings.BASE_DIR / 'classifier' / 'dataset'):
         super().__init__(location)
 
     def url(self, name):
