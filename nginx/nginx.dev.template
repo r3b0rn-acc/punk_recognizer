@@ -10,6 +10,11 @@ server {
         alias /punk_recognizer/static/;
     }
 
+    location /dataset/ {
+        alias /punk_recognizer/classifier/dataset/;
+        autoindex off;
+    }
+
     location / {
         proxy_pass http://django;
         proxy_set_header Host $host;

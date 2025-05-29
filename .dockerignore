@@ -1,9 +1,11 @@
 /.venv/
 /.idea/
 
+/media/
+
 /docker/
 !/docker/scripts
 
 __pycache__/
 
-/classifier/dataset
+classifier/

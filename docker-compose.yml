@@ -14,6 +14,7 @@ services:
       - "8000:8000"
     volumes:
       - ./static:/punk_recognizer/static:ro
+      - ./classifier:/punk_recognizer/classifier
     env_file:
       - .env
     environment:
@@ -41,6 +42,8 @@ services:
       dockerfile: docker/celery.Dockerfile
     container_name: celery_worker
     restart: always
+    volumes:
+      - ./classifier:/punk_recognizer/classifier
     env_file:
       - .env
     environment:
@@ -62,6 +65,7 @@ services:
       - ./nginx/certs:/etc/nginx/ssl:ro
       - ./nginx/mime.types:/etc/nginx/mime.types:ro
       - ./static:/punk_recognizer/static:ro
+      - ./classifier/dataset:/punk_recognizer/classifier/dataset:ro
     env_file:
       - .env
     depends_on:
