@@ -14,6 +14,7 @@ services:
       - "8000:8000"
     volumes:
       - ./static:/punk_recognizer/static:ro
+      - ./media:/punk_recognizer/media
       - ./classifier:/punk_recognizer/classifier
     env_file:
       - .env
