@@ -8,7 +8,7 @@
 
 <script setup>
 import DragAndDropZone from "@/components/DragAndDropZone.vue"
-import {ref, watch} from "vue"
+import {onMounted, ref, watch} from "vue"
 import router from "@/router/index.js"
 import {useTaskStore} from "@/stores/taskStore.js";
 
@@ -17,8 +17,12 @@ const taskStore = useTaskStore()
 
 const imageFile = ref(null)
 
-watch(imageFile, () => {
-  taskStore.createTask(imageFile?.value)
+onMounted(() => {
+  taskStore.clearStore()
+})
+
+watch(imageFile, async () => {
+  await taskStore.createTask(imageFile?.value)
   router.push({name: 'processing'})
 })
 

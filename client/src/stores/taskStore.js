@@ -25,7 +25,6 @@ export const useTaskStore = defineStore('task', () => {
   }
 
   const checkTaskStatus = async () => {
-    console.log(taskID.value)
     if (!taskID.value) return
 
     const response = await api.get(`/status/${taskID.value}/`)
@@ -42,5 +41,5 @@ export const useTaskStore = defineStore('task', () => {
     taskResult.value = null
   }
 
-  return { taskResult, createTask, checkTaskStatus, clearStore }
+  return { taskID, taskResult, createTask, checkTaskStatus, clearStore }
 })
