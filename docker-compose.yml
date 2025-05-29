@@ -44,6 +44,7 @@ services:
     restart: always
     volumes:
       - ./classifier:/punk_recognizer/classifier
+      - ./media:/punk_recognizer/media
     env_file:
       - .env
     environment:
