@@ -1,11 +1,7 @@
 <template>
   <header-main class="sticky top-0" />
   <div class="app justify-center align-center">
-    <router-view v-slot="{ Component }">
-      <keep-alive>
-        <component :is="Component" />
-      </keep-alive>
-    </router-view>
+    <router-view />
   </div>
   <footer-main class="bottom-0" />
 </template>

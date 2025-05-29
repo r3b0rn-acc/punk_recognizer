@@ -23,17 +23,18 @@
       type="file"
       class="hidden"
       accept="image/*"
+      @change="onChange"
     />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import {ref} from 'vue'
 import { useDropZone } from '@vueuse/core'
 
 const props = defineProps({
   modelValue: {
-    type: Object,
+    type: File,
     required: true,
   }
 })
@@ -43,19 +44,19 @@ const emit = defineEmits(['update:modelValue'])
 const dropZone = ref(null)
 const fileInput = ref(null)
 
+const handleFile = (file) => {
+  if (!file.type.startsWith('image')) {
+    alert('Файл должен быть изображением')
+    return
+  }
+
+  emit('update:modelValue', file)
+}
+
+
 const onDrop = (files) => {
   if (files && files.length === 1) {
-    const f = files[0]
-    if (!f.type.startsWith('image')) {
-      alert('Файл должен быть изображением')
-      return
-    }
-
-    emit('update:modelValue', {
-      name: f.name,
-      size: f.size,
-      type: f.type,
-    })
+    handleFile(files[0])
   }
 }
 
@@ -67,5 +68,13 @@ const { isOverDropZone } = useDropZone(dropZone, {
 
 const triggerInput = () => {
   fileInput.value?.click()
+}
+
+const onChange = (e) => {
+  const file = e.target.files?.[0]
+  if (file) {
+    handleFile(file)
+  }
+  e.target.value = ''
 }
 </script>
