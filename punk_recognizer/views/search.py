@@ -7,6 +7,10 @@ from punk_recognizer.models import RecognizeTask
 from punk_recognizer.tasks import process_search
 
 
+ALLOWED_CONTENT_TYPES = ['image/jpeg', 'image/png']
+ALLOWED_EXTENSIONS = ['.jpg', '.jpeg', '.png']
+
+
 class SearchImageView(APIView):
     parser_classes = [MultiPartParser]
 
@@ -15,7 +19,11 @@ class SearchImageView(APIView):
         if not image:
             return Response({'error': 'Image is required'}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Надо подумать че делать с celery_task_id
+        if image.content_type not in ALLOWED_CONTENT_TYPES:
+            return Response({'error': 'Invalid file format'}, status=status.HTTP_400_BAD_REQUEST)
+
+        if not any(image.name.lower().endswith(ext) for ext in ALLOWED_EXTENSIONS):
+            return Response({'error': 'Invalid file format'}, status=status.HTTP_400_BAD_REQUEST)
 
         rt = RecognizeTask.objects.create(input_image=image)
 
@@ -24,4 +32,4 @@ class SearchImageView(APIView):
         rt.celery_task_id = task.id
         rt.save()
 
-        return Response({'taskID': task.id}, status=status.HTTP_201_CREATED)
+        return Response({'taskID': task.id}, status=status.HTTP_202_ACCEPTED)
