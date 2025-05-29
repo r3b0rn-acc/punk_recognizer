@@ -1,13 +1,13 @@
 {
-  "_taskStore-BvnXPCpP.js": {
-    "file": "assets/taskStore-BvnXPCpP.js",
-    "name": "taskStore",
+  "_index-7GxMMcvg.js": {
+    "file": "assets/index-7GxMMcvg.js",
+    "name": "index",
     "imports": [
       "src/main.js"
     ]
   },
   "src/main.js": {
-    "file": "assets/main-WXMVUJAh.js",
+    "file": "assets/main-pHqhdxKN.js",
     "name": "main",
     "src": "src/main.js",
     "isEntry": true,
@@ -17,37 +17,39 @@
       "src/views/ResultsView.vue"
     ],
     "css": [
-      "assets/main-BE5eFA0f.css"
+      "assets/main-DB5bH8xw.css"
     ]
   },
   "src/views/ProcessingView.vue": {
-    "file": "assets/ProcessingView-BYTsVdRh.js",
+    "file": "assets/ProcessingView-Cq6MfQ-m.js",
     "name": "ProcessingView",
     "src": "src/views/ProcessingView.vue",
     "isDynamicEntry": true,
     "imports": [
-      "src/main.js",
-      "_taskStore-BvnXPCpP.js"
+      "src/main.js"
     ]
   },
   "src/views/ResultsView.vue": {
-    "file": "assets/ResultsView-DZs34OJ1.js",
+    "file": "assets/ResultsView-Hpa0FUcm.js",
     "name": "ResultsView",
     "src": "src/views/ResultsView.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_taskStore-BvnXPCpP.js",
-      "src/main.js"
+      "src/main.js",
+      "_index-7GxMMcvg.js"
+    ],
+    "css": [
+      "assets/ResultsView-cf6qErDy.css"
     ]
   },
   "src/views/UploadingView.vue": {
-    "file": "assets/UploadingView-CjyClgW0.js",
+    "file": "assets/UploadingView-CuhgZLAO.js",
     "name": "UploadingView",
     "src": "src/views/UploadingView.vue",
     "isDynamicEntry": true,
     "imports": [
       "src/main.js",
-      "_taskStore-BvnXPCpP.js"
+      "_index-7GxMMcvg.js"
     ]
   }
 }
