@@ -12,7 +12,7 @@
       class="absolute inset-0 flex items-center justify-center font-semibold text-white"
       :style="{'font-size': `calc(${size} * 0.5)`}"
     >
-      {{ modelValue || '1' }}
+      {{ modelValue }}
     </span>
     <span class="sr-only">Loading...</span>
   </div>

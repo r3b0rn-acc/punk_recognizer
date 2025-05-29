@@ -13,7 +13,7 @@
       </p>
     </div>
     <button
-      class="px-6 py-2 rounded-full bg-white text-black text-lg font-medium transition-colors hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-black/70"
+      class="px-6 py-2 rounded-full bg-white text-black text-lg font-medium transition-colors hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-black/70 cursor-pointer"
       @click.stop="triggerInput"
     >
       <span>Загрузить фото</span>
@@ -35,7 +35,8 @@ import { useDropZone } from '@vueuse/core'
 const props = defineProps({
   modelValue: {
     type: File,
-    required: true,
+    required: false,
+    default: null,
   }
 })
 
@@ -45,8 +46,16 @@ const dropZone = ref(null)
 const fileInput = ref(null)
 
 const handleFile = (file) => {
-  if (!file.type.startsWith('image')) {
-    alert('Файл должен быть изображением')
+  const allowedTypes = ['image/jpeg', 'image/png']
+  const allowedExtensions = ['.jpg', '.jpeg', '.png']
+  const fileType = file.type
+  const fileName = file.name.toLowerCase()
+
+  const hasValidType = allowedTypes.includes(fileType)
+  const hasValidExtension = allowedExtensions.some(ext => fileName.endsWith(ext))
+
+  if (!hasValidType || !hasValidExtension) {
+    alert('Допустимы только изображения в формате JPG, JPEG или PNG')
     return
   }
 
